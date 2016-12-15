@@ -23,4 +23,20 @@ public class ListaTareas
         Tarea nuevaTarea = new Tarea(descripcion);
         listaDeTareas.add(nuevaTarea);
     }
+    
+    public void verTareas(){
+        int index = 0;
+        
+        while (index < listaDeTareas.size()){
+            String tareaHecha = "";
+            if (listaDeTareas.get(index).verTareaCompletada()){
+                tareaHecha = " Hecha. ";
+            }
+
+            System.out.println((index +1) + ". " + tareaHecha + listaDeTareas.get(index).verTarea());
+            index++;
+        }
+    }
+    
+
 }

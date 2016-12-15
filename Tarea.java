@@ -21,5 +21,14 @@ public class Tarea
         descripcion = nombre;
         completada = false;
     }
+    
+    public String verTarea(){
+        return descripcion;
+    }
+    
+    public boolean verTareaCompletada(){
+        return completada;
+    }
+
 
 }
