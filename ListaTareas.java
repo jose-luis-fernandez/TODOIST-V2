@@ -43,4 +43,42 @@ public class ListaTareas
             listaDeTareas.get(posicion - 1).marcarTareaCompletada();
         }
     }
+    
+    public void mostrarTareasCoincidentes(String texto){
+        int cont = 0;
+        int index = 0;
+        
+        while (index < listaDeTareas.size()){
+            String tareaHecha = "";
+            if (listaDeTareas.get(index).verTareaCompletada()){
+                tareaHecha = " Hecha. ";
+            }
+            
+            if (listaDeTareas.get(index).verTarea().contains(texto)){
+                System.out.println((index +1) + ". " + tareaHecha + listaDeTareas.get(index).verTarea());
+                cont++;
+            }
+            index++;
+        }
+        
+        if (cont == 0){
+            System.out.println("No hay tareas coincidentes");
+        }
+        else{
+            System.out.println(cont + " tareas encontradas con el texto " + texto);
+        }
+    }
+    
+    public void eliminarTarea(int posicion){
+        posicion = posicion -1;
+        if (posicion >= 0 && posicion <= listaDeTareas.size()){
+            listaDeTareas.remove(posicion);
+        }
+    }
+    
+    
+    
+    
+    
+    
 }
