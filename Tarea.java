@@ -29,6 +29,9 @@ public class Tarea
     public boolean verTareaCompletada(){
         return completada;
     }
-
+    
+    public void marcarTareaCompletada(){
+        completada = true;
+    }
 
 }

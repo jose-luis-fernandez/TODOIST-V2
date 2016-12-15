@@ -38,5 +38,9 @@ public class ListaTareas
         }
     }
     
-
+    public void marcarTareaCompletada(int posicion){
+        if (posicion > 0 && posicion <= listaDeTareas.size()){
+            listaDeTareas.get(posicion - 1).marcarTareaCompletada();
+        }
+    }
 }
