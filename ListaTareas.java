@@ -28,12 +28,8 @@ public class ListaTareas
         int index = 0;
         
         while (index < listaDeTareas.size()){
-            String tareaHecha = "";
-            if (listaDeTareas.get(index).verTareaCompletada()){
-                tareaHecha = " Hecha. ";
-            }
-
-            System.out.println((index +1) + ". " + tareaHecha + listaDeTareas.get(index).verTarea());
+            
+            System.out.println((index +1) + ". " + listaDeTareas.get(index).toString());
             index++;
         }
     }
@@ -71,14 +67,28 @@ public class ListaTareas
     
     public void eliminarTarea(int posicion){
         posicion = posicion -1;
-        if (posicion >= 0 && posicion <= listaDeTareas.size()){
+        if (posicion >= 0 && posicion < listaDeTareas.size()){
             listaDeTareas.remove(posicion);
         }
     }
     
+    public void establecerPrioridad(int posicion, int prioridadNueva)
+    {
+        int posicionReal = posicion - 1;
+        if (posicion >= 0 && posicion < listaDeTareas.size()){
+            if (prioridadNueva >= 0 && prioridadNueva <=5){
+                listaDeTareas.get(posicionReal).setPrioridad(prioridadNueva);
+            }
+        }
+    }
     
-    
-    
+    public void fijarFechaVencimiento(int posicion, int anio, int mes, int dia)
+    {
+        posicion = posicion -1;
+        if (posicion >= 0 && posicion < listaDeTareas.size()){
+            listaDeTareas.get(posicion).setFechaVencimiento(anio, mes, dia);
+        }
+    }
     
     
 }
