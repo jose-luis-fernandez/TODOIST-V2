@@ -16,17 +16,20 @@ public class Tarea
     private int prioridad;
     //Atributo que indica la fecha de vencimiento de la tarea
     private LocalDate fechaVencimiento;
+    //Atributo que indica el id de la tarea
+    private int id;
 
     /**
      * Constructor for objects of class Tarea
      */
-    public Tarea(String nombre)
+    public Tarea(String nombre, int id)
     {
         // initialise instance variables
         descripcion = nombre;
         completada = false;
         prioridad = 0;
         fechaVencimiento = null;
+        this.id = id;
     }
     
     public String verTarea(){
@@ -47,7 +50,14 @@ public class Tarea
         if (completada){
             textoADevolver += "HECHA ";
         }
-        textoADevolver += descripcion + " (Prioridad: " + prioridad + ") " + "Fecha de vencimiento: " + fechaVencimiento.toString();
+        String fechaVencimiento = "" + this.fechaVencimiento;
+        if (this.fechaVencimiento == null){
+            fechaVencimiento = "";
+        }
+        else{
+            fechaVencimiento = getFechaVencimiento();
+        }
+        textoADevolver += id + ". " + descripcion + " (Prioridad: " + prioridad + ") " + "Fecha de vencimiento: " + fechaVencimiento;
         return textoADevolver;
     }
     
@@ -65,13 +75,30 @@ public class Tarea
     
     public String getFechaVencimiento()
     {
-        String dia = "" + fechaVencimiento.getDayOfMonth();
-        String mes = "" + fechaVencimiento.getMonthValue();
-        String anio = "" + fechaVencimiento.getYear();
-        String fecha = dia + "-" + mes + "-" + anio;
+        String fecha = "";
+        if (fechaVencimiento != null){
+            String dia = "" + fechaVencimiento.getDayOfMonth();
+            String mes = "" + fechaVencimiento.getMonthValue();
+            String anio = "" + fechaVencimiento.getYear();
+            fecha = dia + "-" + mes + "-" + anio;
+        }
         return fecha;
     }
-
+    
+    public LocalDate getFecha()
+    {
+        return fechaVencimiento;
+    }
+    
+    public int obtenerPrioridad()
+    {
+        return prioridad;
+    }
+    
+    public int getId()
+    {
+        return id;
+    }
 
 }
 
